@@ -1,0 +1,16 @@
+@import "@/src/app/shortClasses.scss";
+
+header {
+  @include container;
+  @include flex(space-between, center);
+
+  width: 100%;
+  background-color: var(--white);
+
+  .btn-box {
+    @include flex(flex-start, center);
+
+    width: 100%;
+    gap: 10px;
+  }
+}

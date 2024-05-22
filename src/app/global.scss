@@ -29,20 +29,4 @@ a {
 
 .container {
   @include container();
-  max-width: 1170px;
-
-  @include max-w-media(1024px) {
-    max-width: 1170px;
-    padding: 0 60px;
-  }
-
-  @include max-w-media(768px) {
-    max-width: 704px;
-    padding: 0 32px;
-  }
-
-  @include max-w-media(360px) {
-    max-width: 328px;
-    padding: 0 16px;
-  }
 }
