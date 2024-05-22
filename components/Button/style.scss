@@ -1,0 +1,13 @@
+@import "@/src/app/shortClasses.scss";
+
+button {
+  @include flex(center, center);
+  max-width: 100px;
+  width: 100%;
+
+  padding: 4px 0;
+  border-radius: 80px;
+
+  background-color: var(--primary-color);
+  color: var(--black);
+}
