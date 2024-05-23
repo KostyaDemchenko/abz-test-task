@@ -1,0 +1,43 @@
+input[type="text"],
+input[type="email"],
+input[type="phone"] {
+  // Reset basic styles
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  outline: none;
+  resize: none;
+
+  // Custom styles
+  max-width: 380px;
+  width: 100%;
+
+  padding: 14px 16px;
+
+  border-radius: 4px;
+  border: 1px solid var(--light-gray);
+  background-color: var(--background-color);
+
+  font-size: 16px;
+  line-height: 26px;
+  color: var(--black);
+
+  margin: 0;
+  box-shadow: none;
+
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+
+  &::placeholder {
+    color: var(--dark-gray);
+    font-size: 16px;
+    line-height: 26px;
+  }
+
+  &:active,
+  &:focus {
+    box-shadow: none;
+    border: 1px solid var(--secondary-color);
+    transition: 0.3s ease-in-out;
+  }
+}

@@ -4,7 +4,8 @@ import axios from "axios";
 
 // importing components
 import Button from "@/components/Button";
-// import InputTextType from "@/components/InputTextType";
+import TextInput from "@/components/TextInput";
+import RadioGroup from "@/components/RadioInput";
 // import Input from "@/components/InputEmailType";
 
 import "./style.scss";
@@ -13,13 +14,29 @@ const JobApplication: React.FC = () => {
   return (
     <div className='job-application-container container'>
       <h2 className='section-title'>Working with POST request</h2>
-      <form action=''>
-        <input type='text' placeholder='Your name' />
-        <input type='email' placeholder='Email' />
-        <input type='phone' placeholder='Phone' />
-        {/* <div className="job-aplication-type">
-          <p>Select your position</p>
-        </div> */}
+      <form action='' className='job-application-form'>
+        <TextInput inputType='text' placeholder='Your name' />
+        <TextInput inputType='email' placeholder='Email' />
+        <TextInput inputType='phone' placeholder='Phone' />
+        <div className='job-aplication-type'>
+          <RadioGroup
+            title='Select your position'
+            group={[
+              {
+                name: "music_type",
+                id: "Album",
+                label: "Album",
+                value: "album",
+              },
+              {
+                name: "music_type",
+                id: "Single",
+                label: "Single",
+                value: "single",
+              },
+            ]}
+          />
+        </div>
         <Button onClick={() => {}}>Sign up</Button>
       </form>
     </div>

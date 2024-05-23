@@ -6,7 +6,7 @@ import React from "react";
 import Headder from "@/components/Header";
 import FirstSection from "@/components/FirstSection";
 import EmployeesList from "@/components/EmployeesList";
-import Button from "@/components/Button";
+import JobApplication from "@/components/JobApplication";
 
 import "./global.scss";
 
@@ -17,6 +17,7 @@ export default function Home() {
       <main>
         <FirstSection />
         <EmployeesList />
+        <JobApplication />
       </main>
     </>
   );
