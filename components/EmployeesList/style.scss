@@ -7,13 +7,22 @@
   gap: 50px;
 
   .users-list {
-    @include flex(flex-start, flex-start);
-    @include f-direction(row);
-
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    justify-content: flex-start;
+    align-items: flex-start;
+    grid-gap: 20px;
     width: 100%;
-    gap: 29px 29px;
 
-    flex-wrap: wrap;
+    @include max-w-media(1024px) {
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      grid-gap: 29px;
+    }
+
+    @include max-w-media(768px) {
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      grid-gap: 16px;
+    }
   }
 
   button {
