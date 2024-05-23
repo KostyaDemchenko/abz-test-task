@@ -13,8 +13,8 @@ const Headder = () => {
       <div className='container'>
         <Image src={logo} alt='logo' />
         <div className='btn-box'>
-          <Button>Users</Button>
-          <Button>Sign up</Button>
+          <Button onClick={() => {}}>Users</Button>
+          <Button onClick={() => {}}>Sign up</Button>
         </div>
       </div>
     </header>

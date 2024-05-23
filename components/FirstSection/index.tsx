@@ -20,7 +20,7 @@ const FirstSection = () => {
               the world of Front-End Development keeps evolving.
             </p>
           </div>
-          <Button>Sign up</Button>
+          <Button onClick={() => {}}>Sign up</Button>
         </div>
       </div>
     </>
