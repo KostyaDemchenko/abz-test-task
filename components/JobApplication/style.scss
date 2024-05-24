@@ -6,4 +6,50 @@
 
   width: 100%;
   gap: 50px;
+
+  .job-application-form {
+    @include flex(flex-start, center);
+    @include f-direction(column);
+
+    max-width: 380px;
+    width: 100%;
+    gap: 50px;
+
+    .select-container {
+      @include flex(flex-start, center);
+      @include f-direction(column);
+
+      width: 100%;
+    }
+
+    .input-container {
+      @include flex(flex-start, center);
+      @include f-direction(column);
+
+      width: 100%;
+      gap: 50px;
+
+      margin-bottom: 43px;
+
+      position: relative;
+
+      .clue {
+        position: absolute;
+        font-size: 12px;
+        line-height: 14px;
+        color: var(--dark-gray);
+        bottom: -20px;
+        left: 16px;
+        width: fit-content;
+        height: 14px;
+        pointer-events: none; /* Чтобы псевдоэлемент не мешал вводу */
+      }
+    }
+
+    .job-aplication-type {
+      width: 100%;
+
+      margin-bottom: 47px;
+    }
+  }
 }

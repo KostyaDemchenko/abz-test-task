@@ -1,0 +1,49 @@
+@import "@/src/app/shortClasses.scss";
+
+.file-upload {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 54px;
+  width: 100%;
+}
+
+.file-select {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.file-select-button {
+  position: absolute;
+
+  left: 0;
+  top: 0;
+  bottom: 0;
+
+  background-color: var(--background-color);
+  border: 1px solid var(--black);
+  color: var(--black);
+  padding: 14px 15px;
+  cursor: pointer;
+  border-radius: 4px 0 0 4px;
+}
+
+.file-select-name {
+  @include flex(flex-start, center);
+  width: 100%;
+  height: 100%;
+
+  font-size: 16px;
+  line-height: 24px;
+
+  padding-left: 99px;
+  color: var(--dark-gray);
+  border: 1px solid var(--light-gray);
+  border-radius: 4px;
+  pointer-events: none;
+}
+
+.file-upload.active .file-select-name {
+  color: var(--black);
+}

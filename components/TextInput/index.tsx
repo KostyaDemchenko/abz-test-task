@@ -9,7 +9,7 @@ interface TextInputProps {
 }
 
 const TextInput = ({ inputType, placeholder }: TextInputProps) => {
-  return <input type={inputType} placeholder={placeholder} />;
+  return <input type={inputType} placeholder={placeholder} required />;
 };
 
 export default TextInput;

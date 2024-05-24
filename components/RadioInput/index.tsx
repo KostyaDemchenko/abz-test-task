@@ -26,6 +26,7 @@ const RadioButton: React.FC<RadioButtonProps> = ({
         name={name}
         id={id}
         value={value}
+        required
       />
       <span className='custom-radiobutton' />
       {label}
@@ -36,7 +37,7 @@ const RadioButton: React.FC<RadioButtonProps> = ({
 const RadioGroup: React.FC<RadioButtonGroupProps> = ({ group, title }) => {
   return (
     <div className='radiobutton-container'>
-      {title && <label>{title}</label>}
+      {title && <p className='radiobutton-title'>{title}</p>}
       <div className='radiobutton-group'>
         {group.map((el, idx) => {
           return (
