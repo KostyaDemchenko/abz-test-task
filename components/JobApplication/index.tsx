@@ -1,17 +1,17 @@
-// @/components/EmployeesList/index.tsx
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-// importing components
+// Importing components
 import Button from "@/components/Button";
 import NameInput from "@/components/Inputs/NameInput";
 import EmailInput from "@/components/Inputs/EmailInput";
 import PhoneInput from "@/components/Inputs/PhoneInput";
 import PositionList from "@/components/PostionsList";
 import FileInput from "@/components/FileInput";
+import SuccessfullRegister from "@/components/SuccessfullRegister";
+import Preloader from "@/components/Preloader";
 
 import "./style.scss";
-import Preloader from "../Preloader";
 
 const JobApplication: React.FC = () => {
   const [name, setName] = useState<string>("");
@@ -20,6 +20,9 @@ const JobApplication: React.FC = () => {
   const [positionId, setPositionId] = useState<number | null>(null);
   const [photo, setPhoto] = useState<File | null>(null);
   const [token, setToken] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false); // Added loading state
+  const [registrationSuccess, setRegistrationSuccess] =
+    useState<boolean>(false); // Added registration success state
 
   useEffect(() => {
     // Fetch the token
@@ -38,6 +41,8 @@ const JobApplication: React.FC = () => {
       alert("All fields are required!");
       return;
     }
+
+    setLoading(true); // Set loading to true when form is submitted
 
     const formData = new FormData();
     formData.append("name", name);
@@ -58,11 +63,14 @@ const JobApplication: React.FC = () => {
         }
       )
       .then((response) => {
+        setLoading(false); // Set loading to false when request is completed
         if (response.data.success) {
-          alert("New user successfully registered");
+          // Display success message
+          setRegistrationSuccess(true);
         }
       })
       .catch((error) => {
+        setLoading(false); // Set loading to false in case of error
         if (error.response) {
           alert(`Error: ${error.response.data.message}`);
         } else {
@@ -74,29 +82,35 @@ const JobApplication: React.FC = () => {
   return (
     <div className='job-application-container container'>
       <h2 className='section-title'>Working with POST request</h2>
-      <form onSubmit={handleSubmit} className='job-application-form'>
-        <div className='select-container'>
-          <div className='inputs-container'>
-            <NameInput
-              placeholder='Your name'
-              onChange={(e) => setName(e.target.value)}
-            />
-            <EmailInput
-              placeholder='Email'
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <PhoneInput
-              placeholder='Phone'
-              onChange={(e) => setPhone(e.target.value)}
-            />
+      {registrationSuccess ? ( // Show SuccessfullRegister component if registration is successful
+        <SuccessfullRegister />
+      ) : loading ? ( // Show preloader if loading is true
+        <Preloader />
+      ) : (
+        <form onSubmit={handleSubmit} className='job-application-form'>
+          <div className='select-container'>
+            <div className='inputs-container'>
+              <NameInput
+                placeholder='Your name'
+                onChange={(e) => setName(e.target.value)}
+              />
+              <EmailInput
+                placeholder='Email'
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <PhoneInput
+                placeholder='Phone'
+                onChange={(e) => setPhone(e.target.value)}
+              />
+            </div>
+            <div className='job-aplication-type'>
+              <PositionList onSelect={(id) => setPositionId(id)} />
+            </div>
+            <FileInput onFileSelect={(file) => setPhoto(file)} />
           </div>
-          <div className='job-aplication-type'>
-            <PositionList onSelect={(id) => setPositionId(id)} />
-          </div>
-          <FileInput onFileSelect={(file) => setPhoto(file)} />
-        </div>
-        <Button type='submit'>Sign up</Button>
-      </form>
+          <Button type='submit'>Sign up</Button>
+        </form>
+      )}
     </div>
   );
 };
