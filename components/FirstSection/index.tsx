@@ -8,7 +8,7 @@ import "./style.scss";
 const FirstSection = () => {
   return (
     <>
-      <div className='cover container'>
+      <div className='cover'>
         <div className='box'>
           <div className='text-container'>
             <h1>Test assignment for front-end developer</h1>
