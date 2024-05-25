@@ -23,6 +23,11 @@
       grid-template-columns: repeat(auto-fit, minmax(344px, 1fr));
       grid-gap: 16px;
     }
+
+    @include max-w-media(360px) {
+      grid-template-columns: repeat(auto-fit, minmax(328px, 1fr));
+      grid-gap: 20px;
+    }
   }
 
   button {
