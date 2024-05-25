@@ -4,6 +4,7 @@ import axios from "axios";
 
 import Button from "@/components/Button";
 import Card from "@/components/Card";
+import Preloader from "@/components/Preloader";
 
 import "./style.scss";
 
@@ -21,10 +22,13 @@ const EmployeesList: React.FC = () => {
   const [users, setUsers] = useState<User[]>([]);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchUsers = async () => {
       try {
+        setLoading(true);
         const response = await axios.get(
           `https://frontend-test-assignment-api.abz.agency/api/v1/users?page=${page}&count=6`
         );
@@ -45,7 +49,9 @@ const EmployeesList: React.FC = () => {
         setUsers((prevUsers) => [...prevUsers, ...uniqueUsers]);
         setTotalPages(response.data.total_pages);
       } catch (error) {
-        console.error("Error fetching users:", error);
+        setError("An error occurred while fetching users");
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -57,6 +63,14 @@ const EmployeesList: React.FC = () => {
       setPage(page + 1);
     }
   };
+
+  if (loading) {
+    return <Preloader />;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
 
   return (
     <div className='user-list-container container'>

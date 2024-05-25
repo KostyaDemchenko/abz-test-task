@@ -1,0 +1,18 @@
+.spinner {
+  animation: spinner 1s infinite linear;
+  border-radius: 50px;
+  border: 5px solid var(--background-color);
+  border-top-color: var(--secondary-color);
+  border-right-color: var(--secondary-color);
+  border-left-color: var(--secondary-color);
+  height: 48px;
+  width: 48px;
+  margin: 0 auto 10px auto;
+}
+
+/* Animación del preloader */
+@keyframes spinner {
+  to {
+    transform: rotateZ(360deg);
+  }
+}

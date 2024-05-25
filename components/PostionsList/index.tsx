@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import RadioGroup from "@/components/RadioInput";
+import Preloader from "@/components/Preloader";
+
 import "./style.scss";
 
 interface Position {
@@ -39,7 +41,7 @@ const PositionList: React.FC<PositionListProps> = ({ onSelect }) => {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Preloader />;
   }
 
   if (error) {

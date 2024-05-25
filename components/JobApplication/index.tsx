@@ -11,6 +11,7 @@ import PositionList from "@/components/PostionsList";
 import FileInput from "@/components/FileInput";
 
 import "./style.scss";
+import Preloader from "../Preloader";
 
 const JobApplication: React.FC = () => {
   const [name, setName] = useState<string>("");
@@ -96,6 +97,7 @@ const JobApplication: React.FC = () => {
         </div>
         <Button type='submit'>Sign up</Button>
       </form>
+      <Preloader />
     </div>
   );
 };
