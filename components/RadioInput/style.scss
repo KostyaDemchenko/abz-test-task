@@ -80,6 +80,6 @@
   .radiobutton-group {
     @include flex(flex-start, flex-start);
     @include f-direction(column);
-    gap: 10px;
+    gap: 11px;
   }
 }

@@ -11,7 +11,7 @@
     grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
     justify-content: flex-start;
     align-items: flex-start;
-    grid-gap: 20px;
+    grid-gap: 29px;
     width: 100%;
 
     @include max-w-media(1024px) {

@@ -12,6 +12,19 @@
   --red: #cb3d40;
 }
 
+::-webkit-scrollbar {
+  width: 0px;
+  height: 1px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--black);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--secondary-color);
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
