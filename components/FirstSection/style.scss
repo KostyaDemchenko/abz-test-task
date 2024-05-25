@@ -66,6 +66,8 @@
   @include max-w-media(360px) {
     @include flex(flex-start, center);
 
+    background-image: url("../../public/img/main-bg-img-mobile.webp");
+
     max-width: 100dvw;
     height: 500px;
 
