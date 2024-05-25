@@ -97,7 +97,6 @@ const JobApplication: React.FC = () => {
         </div>
         <Button type='submit'>Sign up</Button>
       </form>
-      <Preloader />
     </div>
   );
 };
