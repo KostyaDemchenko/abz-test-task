@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Head from "next/head"; // Import Head component from Next.js
 
 import "./global.scss";
 
@@ -14,6 +15,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
+      <Head>
+        <link rel='preload' href='/public/img/main-bg-img.webp' as='image' />
+        <link
+          rel='preload'
+          href='/public/img/main-bg-img-mobile.webp'
+          as='image'
+        />
+      </Head>
       <body>{children}</body>
     </html>
   );
