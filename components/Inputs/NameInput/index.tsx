@@ -3,10 +3,10 @@ import ".././style.scss";
 
 interface NameInputProps {
   placeholder: string;
-  children?: React.ReactNode;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const NameInput = ({ placeholder }: NameInputProps) => {
+const NameInput = ({ placeholder, onChange }: NameInputProps) => {
   const [username, setUsername] = useState("");
   const [error, setError] = useState("");
 
@@ -18,6 +18,7 @@ const NameInput = ({ placeholder }: NameInputProps) => {
       setError("");
     }
     setUsername(value);
+    onChange(e); // Call the parent's onChange handler
   };
 
   return (

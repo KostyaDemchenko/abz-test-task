@@ -1,3 +1,4 @@
+import React from "react";
 import "./style.scss";
 
 interface RadioButtonProps {
@@ -5,11 +6,13 @@ interface RadioButtonProps {
   label: string;
   name: string;
   value: string;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 interface RadioButtonGroupProps {
-  group: RadioButtonProps[];
+  group: Omit<RadioButtonProps, "onChange">[];
   title?: string;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const RadioButton: React.FC<RadioButtonProps> = ({
@@ -17,6 +20,7 @@ const RadioButton: React.FC<RadioButtonProps> = ({
   label,
   name,
   value,
+  onChange,
 }) => {
   return (
     <label htmlFor={id} className='radiobutton-label'>
@@ -26,6 +30,7 @@ const RadioButton: React.FC<RadioButtonProps> = ({
         name={name}
         id={id}
         value={value}
+        onChange={onChange}
         required
       />
       <span className='custom-radiobutton' />
@@ -34,22 +39,25 @@ const RadioButton: React.FC<RadioButtonProps> = ({
   );
 };
 
-const RadioGroup: React.FC<RadioButtonGroupProps> = ({ group, title }) => {
+const RadioGroup: React.FC<RadioButtonGroupProps> = ({
+  group,
+  title,
+  onChange,
+}) => {
   return (
     <div className='radiobutton-container'>
       {title && <p className='radiobutton-title'>{title}</p>}
       <div className='radiobutton-group'>
-        {group.map((el, idx) => {
-          return (
-            <RadioButton
-              key={idx}
-              id={el.id}
-              label={el.label}
-              name={el.name}
-              value={el.value}
-            />
-          );
-        })}
+        {group.map((el, idx) => (
+          <RadioButton
+            key={idx}
+            id={el.id}
+            label={el.label}
+            name={el.name}
+            value={el.value}
+            onChange={onChange}
+          />
+        ))}
       </div>
     </div>
   );

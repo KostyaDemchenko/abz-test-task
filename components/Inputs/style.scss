@@ -46,11 +46,25 @@
       transition: 0.3s ease-in-out;
     }
   }
+  .clue {
+    position: absolute;
+    font-size: 12px;
+    line-height: 14px;
+    color: var(--dark-gray);
+    bottom: -20px;
+    left: 16px;
+    width: fit-content;
+    height: 14px;
+    pointer-events: none;
+  }
+
   .error {
     position: absolute;
-    bottom: -25px;
+    bottom: -37px;
     left: 16px;
-
     color: var(--red);
+    font-size: 12px;
+    line-height: 14px;
+    pointer-events: none;
   }
 }

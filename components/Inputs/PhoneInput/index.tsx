@@ -3,10 +3,10 @@ import ".././style.scss";
 
 interface PhoneInputProps {
   placeholder: string;
-  children?: React.ReactNode;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const PhoneInput = ({ placeholder }: PhoneInputProps) => {
+const PhoneInput = ({ placeholder, onChange }: PhoneInputProps) => {
   const [phone, setPhone] = useState("");
   const [error, setError] = useState("");
 
@@ -23,10 +23,11 @@ const PhoneInput = ({ placeholder }: PhoneInputProps) => {
       setError("");
     }
     setPhone(value);
+    onChange(e); // Call the parent's onChange handler
   };
 
   return (
-    <div className='input-container'>
+    <div className='input-container phone'>
       <input
         type='tel'
         placeholder={placeholder}
@@ -34,6 +35,7 @@ const PhoneInput = ({ placeholder }: PhoneInputProps) => {
         onChange={handleInputChange}
         required
       />
+      <p className='clue'>+38 (XXX) XXX - XX - XX</p>
       {error && <p className='error'>{error}</p>}
     </div>
   );

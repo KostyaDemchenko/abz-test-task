@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import RadioGroup from "@/components/RadioInput"; // Импортируйте ваш RadioGroup компонент
+import RadioGroup from "@/components/RadioInput";
 import "./style.scss";
 
 interface Position {
@@ -7,7 +7,11 @@ interface Position {
   name: string;
 }
 
-const PositionList: React.FC = () => {
+interface PositionListProps {
+  onSelect: (id: number) => void;
+}
+
+const PositionList: React.FC<PositionListProps> = ({ onSelect }) => {
   const [positions, setPositions] = useState<Position[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -46,12 +50,20 @@ const PositionList: React.FC = () => {
     id: position.id.toString(),
     label: position.name,
     name: "position",
-    value: position.name.toLowerCase().replace(" ", "_"),
+    value: position.id.toString(), // Use ID as the value to pass to onSelect
   }));
+
+  const handlePositionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    onSelect(Number(e.target.value));
+  };
 
   return (
     <div>
-      <RadioGroup title='Select your position' group={radioGroupData} />
+      <RadioGroup
+        title='Select your position'
+        group={radioGroupData}
+        onChange={handlePositionChange}
+      />
     </div>
   );
 };

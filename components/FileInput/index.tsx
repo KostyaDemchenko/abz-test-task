@@ -1,7 +1,11 @@
 import React, { useState, useRef, ChangeEvent } from "react";
 import "./style.scss";
 
-const FileUpload: React.FC = () => {
+interface FileUploadProps {
+  onFileSelect: (file: File | null) => void;
+}
+
+const FileUpload: React.FC<FileUploadProps> = ({ onFileSelect }) => {
   const [fileName, setFileName] = useState<string>("Upload your photo");
   const [error, setError] = useState<string>("");
   const fileInputRef = useRef<HTMLInputElement | null>(null);
@@ -15,6 +19,7 @@ const FileUpload: React.FC = () => {
       if (file.size > 5 * 1024 * 1024) {
         setError("File size must not be greater than 5 MB.");
         setFileName("Upload your photo");
+        onFileSelect(null);
         return;
       }
 
@@ -22,6 +27,7 @@ const FileUpload: React.FC = () => {
       if (!["image/jpeg", "image/jpg"].includes(file.type)) {
         setError("File format must be jpeg/jpg.");
         setFileName("Upload your photo");
+        onFileSelect(null);
         return;
       }
 
@@ -31,19 +37,23 @@ const FileUpload: React.FC = () => {
         if (img.width < 70 || img.height < 70) {
           setError("Photo dimensions must be at least 70x70 pixels.");
           setFileName("Upload your photo");
+          onFileSelect(null);
         } else {
           setError("");
           setFileName(file.name);
+          onFileSelect(file);
         }
       };
       img.onerror = () => {
         setError("Invalid image file.");
         setFileName("Upload your photo");
+        onFileSelect(null);
       };
       img.src = URL.createObjectURL(file);
     } else {
       setFileName("Upload your photo");
       setError("");
+      onFileSelect(null);
     }
   };
 

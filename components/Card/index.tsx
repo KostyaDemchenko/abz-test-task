@@ -20,11 +20,19 @@ const Button = ({
   return (
     <div className='peron-card'>
       <img src={personImage} alt={personName} className='person-image' />
-      <h4 className='person-name'>{personName}</h4>
+      <h4 className='person-name' title={personName}>
+        {personName}
+      </h4>
       <div className='person-info-box'>
-        <p className='person-position'>{personPosition}</p>
-        <p className='person-email'>{personEmail}</p>
-        <p className='person-phone'>{personPhone}</p>
+        <p className='person-position' title={personPosition}>
+          {personPosition}
+        </p>
+        <p className='person-email' title={personEmail}>
+          {personEmail}
+        </p>
+        <p className='person-phone' title={personPhone}>
+          {personPhone}
+        </p>
       </div>
     </div>
   );

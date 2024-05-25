@@ -1,14 +1,18 @@
 import React from "react";
-
 import "./style.scss";
 
 interface ButtonProps {
-  onClick: () => void;
+  onClick?: () => void;
+  type?: "button" | "submit" | "reset";
   children: React.ReactNode;
 }
 
-const Button = ({ children, onClick }: ButtonProps) => {
-  return <button onClick={onClick}>{children}</button>;
+const Button = ({ children, onClick, type = "button" }: ButtonProps) => {
+  return (
+    <button type={type} onClick={onClick}>
+      {children}
+    </button>
+  );
 };
 
 export default Button;

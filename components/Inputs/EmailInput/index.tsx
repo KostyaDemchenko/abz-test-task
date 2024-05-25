@@ -3,10 +3,10 @@ import ".././style.scss";
 
 interface EmailInputProps {
   placeholder: string;
-  children?: React.ReactNode;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const EmailInput = ({ placeholder }: EmailInputProps) => {
+const EmailInput = ({ placeholder, onChange }: EmailInputProps) => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
 
@@ -25,6 +25,7 @@ const EmailInput = ({ placeholder }: EmailInputProps) => {
       setError("");
     }
     setEmail(value);
+    onChange(e); // Call the parent's onChange handler
   };
 
   return (
