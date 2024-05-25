@@ -3,7 +3,9 @@ import React, { useEffect, useState } from "react";
 
 // importing components
 import Button from "@/components/Button";
-import TextInput from "@/components/TextInput";
+import NameInput from "@/components/Inputs/NameInput";
+import EmailInput from "@/components/Inputs/EmailInput";
+import PhoneInput from "@/components/Inputs/PhoneInput";
 import PositionList from "@/components/PostionsList";
 import FileInput from "@/components/FileInput";
 
@@ -15,10 +17,10 @@ const JobApplication: React.FC = () => {
       <h2 className='section-title'>Working with POST request</h2>
       <form action='' className='job-application-form'>
         <div className='select-container'>
-          <div className='input-container'>
-            <TextInput inputType='text' placeholder='Your name' />
-            <TextInput inputType='email' placeholder='Email' />
-            <TextInput inputType='phone' placeholder='Phone' />
+          <div className='inputs-container'>
+            <NameInput placeholder='Your name' />
+            <EmailInput placeholder='Email' />
+            <PhoneInput placeholder='Phone' />
             <p className='clue'>+38 (XXX) XXX - XX - XX</p>
           </div>
           <div className='job-aplication-type'>

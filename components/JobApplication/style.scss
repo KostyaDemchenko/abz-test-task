@@ -22,7 +22,7 @@
       width: 100%;
     }
 
-    .input-container {
+    .inputs-container {
       @include flex(flex-start, center);
       @include f-direction(column);
 
